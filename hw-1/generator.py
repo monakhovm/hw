@@ -12,14 +12,18 @@ def generate_password(length):
                 any(c in string.punctuation for c in password)):
             return password
 
+print("Welcome to the Linux User Password Generator!\n")
+
 while True:
     try:
         pass_length = int(input("Please enter the desired password length: "))
         if pass_length < 4:
             raise ValueError("Length of the password is too small!")
         break
-    except ValueError:
-        print("Not a integer number! Try again!")
+    except ValueError as e:
+        print(e)
+
 
 password = generate_password(pass_length)
-print(password)
+
+print("\nGenerated password: ", password)

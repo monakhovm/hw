@@ -2,7 +2,7 @@ import random
 import string
 
 def generate_password(length):
-    all_characters = string.ascii_letters + string.digits + string.punctuation
+    all_characters = string.ascii_letters + string.digits + string.punctuation.strip('\'(),`"~')
 
     while True:
         password = ''.join(random.choice(all_characters) for _ in range(length))

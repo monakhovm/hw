@@ -25,16 +25,21 @@ def division(x,y: float):
     except ZeroDivisionError:
         return "infinity"
 
-operations = {1:addition, 2:substraction, 3:multiplication, 4:division}
+operations = {
+    1:addition, 
+    2:substraction, 
+    3:multiplication, 
+    4:division
+}
 
 def calculator(x,y: float, n: int):
     result = operations[n](x,y)
     if result*10%10==0:
         result = int(result)
-    return "The result of " + operations[n].__name__ + " is: " + str(result)
+    return "\nThe result of " + operations[n].__name__ + " is: " + str(result)
     
 
-print("Welcome to the Calculator Program!")
+print("Welcome to the Calculator Program!\n")
 
 while True:
     try:
@@ -53,11 +58,11 @@ while True:
 
 
 print("""
-Please select an operation:
-1. Addition
-2. Subtraction
-3. Multiplication
-4. Division
+    Please select an operation:
+        1. Addition
+        2. Subtraction
+        3. Multiplication
+        4. Division
 """)
 
 while True:

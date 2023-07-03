@@ -1,23 +1,23 @@
-
-def addition(x,y: float):
+#!/bin/env python3
+def addition(x: float, y: float):
     try:
         return x+y
     except ValueError:
         print("Error: " + ValueError)
 
-def substraction(x,y: float):
+def substraction(x: float, y: float):
     try:
         return x-y
     except ValueError:
         print("Error: " + ValueError)
 
-def multiplication(x,y: float):
+def multiplication(x: float, y: float):
     try:
         return x*y
     except ValueError:
         print("Error: " + ValueError)
 
-def division(x,y: float):
+def division(x: float, y: float):
     try:
         return x/y
     except ValueError:
@@ -32,9 +32,9 @@ operations = {
     4:division
 }
 
-def calculator(x,y: float, n: int):
+def calculator(x: float, y: float, n: int):
     result = operations[n](x,y)
-    if result*10%10==0:
+    if y!=0 and result*10%10==0:
         result = int(result)
     return "\nThe result of " + operations[n].__name__ + " is: " + str(result)
     
@@ -46,7 +46,7 @@ while True:
         x = float(input("Please enter the first number: "))
         break
     except ValueError:
-        print("Not a number! Try again!")
+        print("Not a number! Input correct value (integer or float with floating point)")
 
 
 while True:
@@ -54,7 +54,7 @@ while True:
         y = float(input("Please enter the second number: "))
         break
     except ValueError:
-        print("Not a number! Try again!")
+        print("Not a number! Input correct value (integer or float with floating point)")
 
 
 print("""
@@ -68,9 +68,13 @@ print("""
 while True:
     try:
         n = int(input("Enter your choice (1-4): "))
+        if n < 1 or n > 4:
+            raise KeyError("Incorrect operation! Input correct value according to main instructions!")
         break
+    except KeyError as keyError:
+        print(str(keyError).replace('\'', ''))
     except ValueError:
-        print("Not a number! Try again!")
+        print("Not a number! Input correct value (integer or float with floating point)")
 
 
 print(calculator(x,y,n))

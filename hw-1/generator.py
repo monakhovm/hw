@@ -16,16 +16,28 @@ def generate_password(length, file = None):
                     passwordFile.write(password)
                 return "The password was saved to \'password.txt\' file."
             return password
+        
 file = 'n'
 print("Welcome to the Linux User Password Generator!\n")
 
 while True:
     try:
-        pass_length = int(round(float(input("Please enter the desired password length from 4 to 999,999 symbols: ").replace(',','.'))))
+        while True:
+            try:
+                pass_length = float(input("Please enter the desired password length from 4 to 999,999 symbols: ").replace(',','.'))
+                if pass_length%1==0:
+                    pass_length = int(pass_length)
+                else:
+                    raise ValueError("Error! Input correct value for password length!")
+                print(pass_length)
+                break
+            except ValueError as valueError:
+                print(str(valueError))
+        
         if pass_length < 4:
-            raise ValueError("Password length is not enough! Really? " + str(pass_length) + " symbols password?")
+            raise ValueError("Error! Password length is not enough! Really? " + str(pass_length) + " symbols password?")
         elif pass_length > 999999:
-            raise KeyError("To long password. Input new password length Waiting for number from 4 to 999,999: ")
+            raise KeyError("Error! To long password. Input new password length! Waiting for number from 4 to 999,999: ")
         elif pass_length > 64:
             while True:
                 try:
@@ -47,5 +59,6 @@ while True:
 
 
 password = generate_password(pass_length, file)
+
 
 print("\nGenerated password: ", password)

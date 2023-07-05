@@ -21,7 +21,7 @@ print("Welcome to the Linux User Password Generator!\n")
 
 while True:
     try:
-        pass_length = int(input("Please enter the desired password length from 4 to 999,999 symbols: ").replace('.','').replace(',', ''))
+        pass_length = int(round(float(input("Please enter the desired password length from 4 to 999,999 symbols: ").replace(',','.'))))
         if pass_length < 4:
             raise ValueError("Password length is not enough! Really? " + str(pass_length) + " symbols password?")
         elif pass_length > 999999:
@@ -34,7 +34,7 @@ while True:
                     file = file_utf.decode('utf-8', errors='ignore')
                     if file not in ['y', 'n', 'Y', 'N']:
                         raise ValueError("Input correct value (input \"Y|y\" or \"N|n\")")
-                    elif file == 'n':
+                    elif file == 'n' or file == 'N':
                         raise KeyError("Input new password length: ")
                     break
                 except ValueError as valueError:

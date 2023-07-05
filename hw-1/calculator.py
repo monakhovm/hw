@@ -67,7 +67,7 @@ print("""
 
 while True:
     try:
-        n = int(input("Choose desired operation. Enter number from 1 to 4: "))
+        n = int(round(float(input("Choose desired operation. Enter number from 1 to 4: ").replace(',','.'))))
         if n < 1 or n > 4:
             raise KeyError("Incorrect operation number! Input correct value according to main instructions!")
         break
@@ -76,5 +76,5 @@ while True:
     except ValueError:
         print("That's not a number! Try again with correct value (integer or float with floating point) from 1 to 4")
 
-
+print("\n\t", n, " : ", operations[n].__name__.capitalize())
 print(calculator(x,y,n))
